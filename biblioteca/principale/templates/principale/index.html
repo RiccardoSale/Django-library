@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load staticfiles %}
+    <title>Biblioteca I.T.I.S Carlo Zuccante</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    <div class="wrapper d-flex align-items-stretch">
+      <nav id="sidebar">
+        <div class="p-4 pt-5">
+          <a
+            href="#"
+            class="img logo rounded-circle mb-5"
+            style="background-image: url(https://www.google.com/url?sa=i&url=http%3A%2F%2Fwww.robocupjrveneto.it%2Fgrado2%2F&psig=AOvVaw0HBktd6Ndk2EkHZCNO2LXW&ust=1587211639935000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNic9K6i7-gCFQAAAAAdAAAAABAp);"
+          ></a>
+          <ul class="list-unstyled components mb-5">
+            <li class="active">
+              <a
+                href="#homeSubmenu"
+                >Home</a
+              >
+              <!-- <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                  <a href="#">Home 1</a>
+                </li>
+                <li>
+                  <a href="#">Home 2</a>
+                </li>
+                <li>
+                  <a href="#">Home 3</a>
+                </li>
+              </ul> -->
+            </li>
+            <li>
+              <a href="#">Cerca Libro</a>
+            </li>
+            <li>
+              <a
+                href="#pageSubmenu"
+                data-toggle="collapse"
+                aria-expanded="false"
+                class="dropdown-toggle"
+                >Categoria</a
+              >
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                  <a href="{% url 'Libri' %}">Tutti i libri</a>
+                </li>
+                <li>
+                  <a href="#">Giallo</a>
+                </li>
+                <li>
+                  <a href="#">Romanzo</a>
+                </li>
+                <li>
+                  <a href="#">Storico</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Profilo</a>
+            </li>
+            <li>
+              <a href="#">Assistenza</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5">
+        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+          <div class="container-fluid">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+              <i class="fa fa-bars"></i>
+              <span class="sr-only">Toggle Menu</span>
+            </button>
+            <button
+              class="btn btn-dark d-inline-block d-lg-none ml-auto"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <i class="fa fa-bars"></i>
+            </button>
+
+          </div>
+        </nav>
+
+        <h2 class="mb-4">Libreria I.T.I.S Carlo Zuccante</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+    </div>
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<head>
+  {% load staticfiles %}
+  <title>Biblioteca I.T.I.S Carlo Zuccante</title>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900"
+    rel="stylesheet"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+{% block content %}
+    <h1>Lista libri</h1>
+    
+    <form class="example" action="" style="margin:auto;max-width:300px">
+      <input type="text" name='q' placeholder="Search...">
+      <button type="submit" value='{{ request.GET.q }}'><i class="fa fa-search"></i></button>
+    </form><br>
+
+    {% if libro_list %}
+    <ul>
+
+      {% for libro in libro_list %}
+      <li>
+        <a href="{{libro.get_absolute_url }}">{{libro.Isbn    }}  {{ libro.Titolo    }} {{libro.Autore    }} {{libro.Editore}} </a>
+      </li>
+      {% endfor %}
+
+    </ul>
+
+    {% else %}
+      <p>There are no books in the library.</p>
+    {% endif %}       
+{% endblock %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
