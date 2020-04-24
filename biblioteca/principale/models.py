@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 class Libro(models.Model):
     idLibro= models.AutoField(primary_key= True)
     Dewey= models.ForeignKey('Dewey',on_delete=models.CASCADE)
@@ -19,7 +20,8 @@ class Libro(models.Model):
     BOOL_CHOICES = ((True, 'si'), (False, 'no'))
     InPrestito= models.BooleanField(choices=BOOL_CHOICES)
     idStato=models.ForeignKey('Stato',on_delete=models.CASCADE)
-    
+    image=models.ImageField(blank=True,null=True)
+    Genere= models.ForeignKey('Generi',on_delete=models.CASCADE)
     def __str__(self):
         return self.Titolo
     def get_absolute_url(self):
@@ -35,6 +37,15 @@ class EDITORI(models.Model):
         return self.editore
     class Meta:
         verbose_name_plural= "EDITORI"
+
+class Generi(models.Model):
+    IdGenere = models.AutoField(primary_key= True )
+    genere = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.genere
+    class Meta:
+        verbose_name_plural= "Generi"
 
 class Sede(models.Model):
     IdSede= models.AutoField(primary_key= True)
@@ -128,7 +139,4 @@ class Dewey(models.Model):
     
     class Meta:
         verbose_name_plural="CodiciDewey"
-
-
-    
 

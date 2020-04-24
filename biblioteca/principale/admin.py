@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 
-from .models import Libro,LibriInDisuso,Collocazione,Sede,Stato,EDITORI,Autori,AutoreLibro,Utente,Prestito,Dewey
+from .models import Libro,LibriInDisuso,Collocazione,Sede,Stato,EDITORI,Autori,AutoreLibro,Utente,Prestito,Dewey,Generi
 
 admin.site.register(Collocazione)
 
@@ -12,6 +12,8 @@ admin.site.register(Stato)
 admin.site.register(EDITORI)
 
 admin.site.register(Autori)
+
+admin.site.register(Generi)
 
 class AdminLibro(admin.ModelAdmin):
     list_display=['Isbn','Titolo','Autore','Editore','AnnoPubblicazione']

@@ -1,48 +1,300 @@
-<head>
-  {% load staticfiles %}
-  <title>Biblioteca I.T.I.S Carlo Zuccante</title>
-  <meta charset="utf-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  />
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+  <head>
 
-  <link
-    href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900"
-    rel="stylesheet"
-  />
+    <title>Biblioteca Carlo Zuccante</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-  <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-  />
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900"
+      rel="stylesheet"
+    />
 
-{% block content %}
-    <h1>Lista libri</h1>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/card.css' %}" />
+  </head>
+  <body>
+    <div class="wrapper d-flex align-items-stretch">
+
+      <!-- Inizio Menu Laterale -->
+      <nav id="sidebar">
+        <div class="p-4 pt-5">
+          <a
+            href="#"
+            class="img logo rounded-circle mb-5"
+            style="background-image: url(https://pbs.twimg.com/profile_images/621544689825546240/4T-rBcI3.jpg);"
+          ></a>
+          <ul class="list-unstyled components mb-5">
+            <li class="active">
+              <a
+                href="#homeSubmenu"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a type="button"  data-toggle="modal" data-target="#exampleModal">Cerca Libro</a>
+            </li>
+            <li>
+              <a
+                href="#pageSubmenu"
+                data-toggle="collapse"
+                aria-expanded="false"
+                class="dropdown-toggle"
+                >Categoria</a
+              >
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                  <a href="{% url 'Tutti' %}">TUTTI I LIBRI</a>
+                </li>
+                <li>
+                  <a href="{% url 'Fantasy' %}">FANTASY</a>
+                </li>
+                <li>
+                  <a href="#">BIOGRAFIA E AUTOBIOGRAFIA</a>
+                </li>
+                <li>
+                  <a href="#">ROMANZO STORICO</a>
+                </li>
+                <li>
+                  <a href="{% url 'Gialli' %}">GIALLI</a>
+                </li>
+                <li>
+                  <a href="#">THRILLER</a>
+                </li>
+                <li>
+                  <a href="#">AVVENTURA E AZIONE</a>
+                </li>
+                <li>
+                  <a href="#">FANTASCIENZA</a>
+                </li>
+                <li>
+                  <a href="{% url 'Formazione' %}">ROMANZI DI FORMAZIONE</a>
+                </li>
+                <li>
+                  <a href="#">HORROR</a>
+                </li>
+                <li>
+                  <a href="#">UMORISTICO</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a data-toggle="modal" data-target="#utenteModal">Profilo</a>
+            </li>
+            <li>
+              <a href="#">Contatti</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- Fine Menu Laterale -->
+      
+      <!-- Contenuto Della Pagina  -->
+      <div id="content" class="p-4 p-md-5">
+        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
+          <div style="margin-right: -48px;"class="container-fluid">
+            <button style="margin-top:10px;"type="button" id="sidebarCollapse" class="btn btn-primary align-self-center">
+              <i class="fa fa-bars"></i>
+              <span class="sr-only">Toggle Menu</span>
+            </button>
+            <button
+              style="margin-top:10px;"
+              class="btn btn-dark d-inline-block d-lg-none ml-auto"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <i class="fa fa-bars"></i>
+            </button>
+
+          </div>
+          <br>
+        </nav>
+        {% block content %}
+        <h2 class="mb-4">Lista Libri</h2>
+
+    <div class="row">
+
+    {% for libro  in libro_list|dictsort:"Titolo" %}
+    <div class="card" style="cursor: pointer;" onclick="theFunction()" data-toggle="modal" data-target="#detailsBook{{ forloop.counter0 }}">
+      <div style="background: url('{{ libro.image.url }}');"class="card-image"></div>
+      <div class="card-text">
+        <span class="date">ISBN: {{libro.Isbn }} </span>
+        <h2>{{ libro.Titolo }}</h2>
+        <p>{{ libro.Descrizione }}</p>
+      </div>
+      <div class="card-stats">
+        <div class="stat">
+          <div class="value">Genere</div>
+          <div class="type">{{ libro.Genere }}</div>
+        </div>
+        <div class="stat">
+          <div class="value">Autore</div>
+          <div class="type">{{ libro.Autore }} </div>
+        </div>
+        <div class="stat">
+    <div class="value">Anno</div>
+          <div class="type">{{ libro.AnnoPubblicazione  }}</div>
+        </div>
+      </div>
+    </div>
     
-    <form class="example" action="" style="margin:auto;max-width:300px">
-      <input type="text" name='q' placeholder="Search...">
-      <button type="submit" value='{{ request.GET.q }}'><i class="fa fa-search"></i></button>
-    </form><br>
+<!-- Modale Dettaglio del libro-->
+<div class="modal fade" id="detailsBook{{ forloop.counter0 }}" tabindex="-1" role="dialog" aria-labelledby="detailsBookLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="detailsBookLabel">Titolo del libro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
 
-    {% if libro_list %}
-    <ul>
+          <div class="form-group">
+            <label for="titolo-libro" class="col-form-label">Titolo:{{ libro.Titolo }}</label>
+            <input type="text"  readonly class="form-control" id="titolo-libro">
+          </div>
 
-      {% for libro in libro_list %}
-      <li>
-        <a href="{{libro.get_absolute_url }}">{{libro.Isbn    }}  {{ libro.Titolo    }} {{libro.Autore    }} {{libro.Editore}} </a>
-      </li>
-      {% endfor %}
+          <div class="form-group">
+            <label for="autore-libro-name" class="col-form-label">Autore:{{ libro.Autore }}</label>
+            <input type="text" readonly class="form-control" id="autore-libro-name">
+          </div>
 
-    </ul>
+          <div class="form-group">
+            <label for="genere-libro-name" class="col-form-label">Genere:{{ libro.Genere }}</label>
+            <input type="text" readonly class="form-control" id="genere-libro-name">
+          </div>
 
-    {% else %}
-      <p>There are no books in the library.</p>
-    {% endif %}       
+          <div class="form-group">
+            <label for="editore-libro-name" class="col-form-label">Editore:{{ libro.Editore }}</label>
+            <input type="text" readonly class="form-control" id="editore-libro-name">
+          </div>
+
+          
+          <div class="form-group">
+            <label for="anno-libro-name" class="col-form-label">Anno:{{ libro.AnnoPubblicazione }}</label>
+            <input type="text" readonly class="form-control" id="anno-libro-name">
+          </div>
+
+          <div class="form-group">
+            <label for="nedizione-libro-name" class="col-form-label">Numero Edizione: {{ libro.Nedizione }}</label>
+            <input type="text" readonly class="form-control" id="nedizione-libro-name">
+          </div>
+
+          <div class="form-group">
+            <label for="isbn-libro-name" class="col-form-label">ISBN: {{ libro.Isbn }}</label>
+            <input type="text" readonly class="form-control" id="isbn-libro-name">
+          </div>
+
+          <div class="form-group">
+            <label for="disponibile-libro-name" class="col-form-label">Disponibile:{{ libro.InPrestito }}</label>
+            <input type="text" readonly class="form-control" id="disponibile-libro-name">
+          </div>
+          
+        </form>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
+        <button onclick="location.href = 'search.prenota';" type="button" class="btn btn-primary">Prenota</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
 {% endblock %}
+
+
+<!-- Modale Ricerca del libro-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cerca il tuo libro</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Titolo:</label>
+            <input type="text" name='q' class="form-control" id="recipient-name">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" value='{{ request.GET.q }}' class="btn btn-primary" >Cerca</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fine modale Ricerca del libro -->  
+
+<!-- Fine modale Dettaglio del libro -->  
+
+<!-- Modale Profilo utente -->
+<div class="modal fade" id="utenteModal" tabindex="-1" role="dialog" aria-labelledby="utenteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="utenteModalLabel">Il tuo profilo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+
+          <div class="form-group">
+            <label for="username-libro" class="col-form-label">Username:</label>
+            <input type="text" readonly class="form-control" id="username-libro">
+          </div>
+
+          <div class="form-group">
+            <label for="email-libro-name" class="col-form-label">Email:</label>
+            <input type="text" readonly class="form-control" id="email-libro-name">
+          </div>
+
+          <div class="form-group">
+            <label for="generalita-libro-name" class="col-form-label">Nome e Cognome:</label>
+            <input type="text" readonly class="form-control" id="generalita-libro-name">
+          </div>
+
+          I tuoi libri
+          
+        </form>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Chiudi</button>
+        <button onclick="location.href = 'search.html';" type="button" class="btn btn-primary">Cerca</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fine modale profilo utente -->
+
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/popper.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/card.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
