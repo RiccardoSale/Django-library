@@ -3,10 +3,13 @@ body {
   height: 100%;
   padding: 0;
   margin: 0;
+  overflow: scroll;
 }
 body {
   background: #fff;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  height: 200;
+  overflow: scroll;
 }
 .js-transitions-disabled * {
   -webkit-transition: none !important;
@@ -20,6 +23,7 @@ body {
   perspective: 50vw;
   -webkit-perspective-origin: 50% 50%;
   perspective-origin: 50% 50%;
+  overflow: auto;
 }
 .carousel__control {
   position: absolute;
@@ -31,6 +35,7 @@ body {
   bottom: 0;
   margin: auto;
   z-index: 1;
+  overflow: auto;
 }
 .carousel__control a {
   position: relative;
@@ -38,6 +43,7 @@ body {
   width: 100%;
   padding-top: 75%;
   box-sizing: border-box;
+  overflow: auto;
 }
 .carousel__control a:hover:before {
   background-color: rgba(0, 0, 0, 0.4);

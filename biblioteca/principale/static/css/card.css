@@ -1,14 +1,15 @@
-body {
+.body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  height: 200;
 }
+
 .card {
   display: grid;
   grid-template-columns: 300px;
   grid-template-rows: 210px 210px 80px;
-  grid-template-areas: "image" "text" "stats";
+  grid-template-areas: "image""text""stats";
   width: 301px;
   border-radius: 18px;
   background: white;
@@ -19,6 +20,24 @@ body {
   cursor: pointer;
   margin: 30px;
 }
+
+.input-button {
+  padding: 8px 12px;
+  outline: none;
+  border: 0;
+  color: #fff;
+  border-radius: 4px;
+  background: #de9151;
+  font-family: "Nunito", sans-serif;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.input-button:hover {
+  background: #e06d0f;
+}
+
 .card-image {
   grid-area: image;
   border-top-left-radius: 14px;
@@ -32,19 +51,23 @@ body {
   grid-area: text;
   margin: 25px;
 }
+
 .card-text .date {
   color: #2e2e3a;
   font-size: 13px;
 }
+
 .card-text p {
   color: grey;
   font-size: 15px;
   font-weight: 300;
 }
+
 .card-text h2 {
   margin-top: 0px;
   font-size: 20px;
 }
+
 .card-stats {
   grid-area: stats;
   display: grid;
@@ -56,6 +79,7 @@ body {
   margin-bottom: -1px;
   margin-left: -1px;
 }
+
 .card-stats .stat {
   height: 70px;
   padding: 10px;
@@ -65,22 +89,27 @@ body {
   flex-direction: column;
   color: white;
 }
+
 .card-stats .border {
   border-left: 1px solid rgb(172, 26, 87);
   border-right: 1px solid rgb(172, 26, 87);
 }
+
 .card-stats .value {
   font-size: 22px;
   font-weight: 500;
 }
+
 .card-stats .value sup {
   font-size: 12px;
 }
+
 .card-stats .type {
   font-size: 11px;
   font-weight: 300;
   text-transform: uppercase;
 }
+
 .card:hover {
   transform: scale(1.05);
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
@@ -91,28 +120,35 @@ body {
   background: url("img2.jpg");
   background-size: cover;
 }
+
 .card-text.card2 .date {
   color: rgb(255, 77, 7);
 }
+
 .card-stats.card2 .border {
   border-left: 1px solid rgb(185, 67, 20);
   border-right: 1px solid rgb(185, 67, 20);
 }
+
 .card-stats.card2 {
   background: rgb(255, 77, 7);
 }
+
 /*card3*/
 .card-image.card3 {
   background: url("img3.jpg");
   background-size: cover;
 }
+
 .card-text.card3 .date {
   color: rgb(0, 189, 63);
 }
+
 .card-stats.card3 .border {
   border-left: 1px solid rgb(14, 122, 50);
   border-right: 1px solid rgb(14, 122, 50);
 }
+
 .card-stats.card3 {
   background: rgb(0, 189, 63);
 }
