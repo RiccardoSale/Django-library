@@ -15,7 +15,7 @@
   </ol>
 </details>
 -->
-# Library
+# Django-Library.
 Website built with framework Django.<br />
 Library management website.
 ### Built With
