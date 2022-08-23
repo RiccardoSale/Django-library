@@ -1,3 +1,4 @@
+<!---
 <div id="top"></div>
 <details>
   <summary>Table of Contents</summary>
@@ -13,7 +14,7 @@
     </li>
   </ol>
 </details>
-
+-->
 # Library
 Website built with framework Django.<br />
 Library management website.
